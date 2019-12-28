@@ -1,0 +1,95 @@
+$nav-margin-top: 10px;
+$UColor : #02b3e4;
+#nav{
+    width: 100%;
+    height: 100px;
+    padding: 0px;
+    margin: 0px;
+}
+#nav-wrapper{  
+    max-width: 100rem;
+    height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#logo-wrapper{
+    display: block;
+    //width: 250px;
+    //margin-left: 15px;
+    width: 50px;
+    margin: auto;
+    margin-top: $nav-margin-top;
+}
+#wordmark{
+    display: none;
+}
+#responsive-nav{
+    display: inline-block;
+    width: 100%;
+    margin-top: $nav-margin-top;
+}
+#nav-options ul{
+    list-style: none;
+    padding: 0px;
+}
+#nav-options li{
+    display: block;
+    width: 100%;
+    //margin-left: 20px;
+}
+#nav-options a{
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+#nav-options{
+    display: inline-block;
+    width: 100%;
+}
+.nav-options-show{display: none;}
+#responsiv-icon{
+    position: absolute;
+    left: 10px;
+    top: $nav-margin-top;
+    color: $UColor;
+    font-size: 25px;
+}
+#responsiv-icon p{
+    margin: 0px;
+    margin-top: 5px;
+ }
+
+@media only screen and (min-width: 1000px){
+    .nav-options-show{display: inline-block;}
+
+    #responsiv-icon{
+        display: none !important;
+    }
+    #nav-options{
+        display: inline-block !important;
+        width: auto;
+    }
+    #wordmark{
+        display: inline-block;
+    }
+    #logo-wrapper{
+        display: inline-block;
+        width: 250px;
+        margin-left: 15px;
+        margin-top: $nav-margin-top;
+    }
+    #nav-options li{
+        display: inline;
+        margin-left: 20px;
+    }
+    #nav-options a{
+        display: inline;
+        //width: auto;
+    }
+    #responsive-nav{
+        width: auto;
+    }
+}

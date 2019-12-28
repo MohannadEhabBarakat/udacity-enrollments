@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend:/app
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+
+  website:
+    build: ./frontend/enrollments
+    volumes:
+      - ./frontend/enrollments:/user
+    ports:
+      - 4200:4200
+    depends_on:
+      - backend
+  db:
+    image: postgres
+    environment:
+        # - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=kid
+#         - POSTGRES_DB=enrolle
+#     volumes:
+#         - flask_polls_data:/var/lib/postgresql/data
+
+# volumes:
+#     flask_polls_data:
+        

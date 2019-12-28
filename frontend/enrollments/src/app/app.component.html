@@ -1,0 +1,72 @@
+<app-nav (window:resize)="onResize($event)"></app-nav>
+
+<div id="main-header">
+  <h1>Enrollment page</h1>
+</div>
+
+<div id="input-wrapper">
+  <input type="search" [(ngModel)]="searchPhrase">
+  <div id="search-icon-wrapper">
+    <p id="search-icon">&#x26B2;</p>
+  </div>
+</div>
+
+<div id="main-body">
+  <div id="main-body-wraper">
+    <div id="filter-wraper"> 
+      <span class="mobile-filter-cta blue uppercase" (click)="filterShow=!filterShow">
+        <img src="https://www.udacity.com/assets/iridium/images/course-catalog/filter-icon.svg">
+        Filters
+      </span>
+    <ng-template [ngIf]="filterShow == true">  
+      <div id="options">
+      <div id="op1">
+        <h4>TYPE</h4>
+        <input type="checkbox"><span>Nanodegree</span><br>
+        <input type="checkbox"><span>Free Courses</span>
+      </div>
+      <div id="op2">
+        <h4>SKILL LEVEL</h4>
+        <input type="checkbox"><span>Beginner</span><br>
+        <input type="checkbox"><span>Intermediate</span><br>
+        <input type="checkbox"><span>Advanced</span>
+      </div>
+      </div>
+    </ng-template>
+    </div>
+    <div id="cards-container">
+      <ng-template [ngIf]="search" [ngIfElse]="none">
+        <div id="results-wraper">
+          <h3>Results</h3>
+          <ul>
+            <li>
+              <p class="chosen-filter">item1</p> <p class="clear-filter">&nbsp;&#10005;</p>
+            </li>
+            <li>
+              <p class="chosen-filter">item1</p> <p class="clear-filter">&nbsp;&#10005;</p>
+            </li>
+          </ul>
+        </div>
+      </ng-template>
+      
+      <ng-container *ngFor="let nano of degreesToPresent | LockFilter : searchPhrase">
+        <div class="card" *ngIf="nano.title !=''">
+          <div class="thumpnail"><img src="{{nano.image}}"></div>
+          <div class="main" >
+            <h3 class="school">{{nano.level}}</h3>
+            <h1>{{nano.title}}</h1>
+            <h4>skilles coverd</h4> 
+            <div class="skills">
+              <p *ngFor="let skill of nano.metadata.skills">{{skill}}, </p>
+            </div>
+          </div> 
+          <div>
+            <button class="enrole" (click)="enrole(nano.title)">Un/Enrole</button>
+            <!-- <button class="enrole">Un Enrole</button> -->
+          </div> 
+        </div>  
+      </ng-container>>      
+    </div>
+  </div>
+ </div> 
+<router-outlet></router-outlet>
